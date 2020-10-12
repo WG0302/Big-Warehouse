@@ -1,0 +1,164 @@
+Object.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Calculator
+{
+    class Object
+    {
+
+        public static bool Equals(Object a, Object b)
+        {
+            if (a == b)
+            {
+                return true;
+                
+            }
+            if (a == null || b == null)
+            {
+                return false;
+            }
+            return a.Equals(b); 
+        }
+    }
+}
+Program.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Calculator
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("欢迎使用计算器，请根据提示进行操作：");
+            Console.WriteLine("加法运算，请按1");
+            Console.WriteLine("减法运算，请按2");
+            Console.WriteLine("乘法运算，请按3");
+            Console.WriteLine("除法运算，请按4");
+
+            int flag = Convert.ToInt32(Console.ReadLine());
+
+            int a, b;
+
+            Calclator c;
+
+            switch (flag)
+            {
+                case 1:
+                    Console.WriteLine("请输入数");
+                    a = int.Parse(Console.ReadLine());
+                    b = int.Parse(Console.ReadLine());
+
+                    c = new Calclator(a, b);
+                    if (c.Equals(c.a, c.b))
+                        Console.WriteLine("两数相等");
+                    else
+                        Console.WriteLine("两数不相等");
+                    Console.WriteLine(c.a + " + " + c.b + " = {0}", c.add());
+
+                    break;
+                case 2:
+                    Console.WriteLine("请输入数");
+                    a = int.Parse(Console.ReadLine());
+                    b = int.Parse(Console.ReadLine());
+
+                    c = new Calclator(a, b);
+                    if (c.Equals(c.a, c.b))
+                        Console.WriteLine("两数相等");
+                    else
+                        Console.WriteLine("两数不相等");
+                    Console.WriteLine(c.a + " - " + c.b + " = {0}", c.subt());
+
+                    break;
+                case 3:
+                    Console.WriteLine("请输入数");
+                    a = int.Parse(Console.ReadLine());
+                    b = int.Parse(Console.ReadLine());
+
+                    c = new Calclator(a, b);
+                    if (c.Equals(c.a, c.b))
+                        Console.WriteLine("两数相等");
+                    else
+                        Console.WriteLine("两数不相等");
+                    Console.WriteLine(c.a + " x " + c.b + " = {0}", c.mult());
+
+                    break;
+                case 4:
+                    Console.WriteLine("请输入数");
+                    a = int.Parse(Console.ReadLine());
+                    b = int.Parse(Console.ReadLine());
+
+                    c = new Calclator(a, b);
+                    if (c.Equals(c.a, c.b))
+                        Console.WriteLine("两数相等");
+                    else
+                        Console.WriteLine("两数不相等");
+                    Console.WriteLine(c.a + " ÷ " + c.b + " = {0}", c.divi());
+                    break;
+
+            }
+        }
+
+        public class Calclator
+        {
+            public int a;
+            public int b;
+
+            public Calclator(int a, int b)
+            {
+                this.a = a;
+                this.b = b;
+            }
+
+            public int result;
+
+            public int add()//加法
+            {
+                result = a + b;
+                return result;
+            }
+            public int subt()  //减法
+            {
+                result = a - b;
+                return result;
+            }
+            public int mult()  //乘法
+            {
+                result = a * b;
+                return result;
+            }
+            public int divi()  //除法
+            {
+                result = a / b;
+                return result;
+            }
+            protected char _character;
+
+            public char Character
+            {
+                get { return _character; }
+                set { _character = value; }
+            }
+            public void InPut()
+            {
+                a = Convert.ToInt16(Console.ReadLine());
+                b = Convert.ToInt16(Console.ReadLine());
+                Character = Convert.ToChar(Console.ReadLine());
+            }
+            public bool Equals(int a, int b)
+            {
+                if (a == b)
+                    return true;
+                else
+                    return false;
+            }
+        }
+    }
+}
+
