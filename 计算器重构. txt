@@ -1,0 +1,130 @@
+Object.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Calcuator
+{
+    class Figure
+    {
+        protected int _numOne;
+        private string _str1;
+
+        protected string Str1
+        {
+            get { return _str1; }
+            set { _str1 = value; }
+        }
+        public int NumOne
+        {
+            get { return _numOne; }
+            set { _numOne = value; }
+        }
+        protected int _numTwo;
+        private string _str2;
+
+        public string Str2
+        {
+            get { return _str2; }
+            set { _str2 = value; }
+        }
+        public int NumTwo
+        {
+            get { return _numTwo; }
+            set { _numTwo = value; }
+        }
+        protected char _character;
+        public char Character
+        {
+            get { return _character; }
+            set { _character = value; }
+        }
+        public void InPut()
+        {
+            NumOne = Convert.ToInt16(Console.ReadLine());//Convert.Int()里必须是数字
+            Character = Convert.ToChar(Console.ReadLine());
+            NumTwo = Convert.ToInt16(Console.ReadLine());
+            Console.WriteLine("=");
+        }
+        public string Link()
+        {
+            Str1 = Console.ReadLine();
+            Character = Convert.ToChar(Console.ReadLine());
+            Str2 = Console.ReadLine();
+            if (Character == '+')
+            {
+                Str1 += Str2;
+                return Str1;
+            }
+            else if (Character == '-')
+                return Str1 = Str1.Replace(Str2, "");
+            else
+                return "字符串错误";
+        }
+        public double Count()
+        {
+            if (Character == '+')
+            {
+                return NumOne + NumTwo;
+            }
+            else if (Character == '-')
+            {
+                return NumOne - NumTwo;
+            }
+            else if (Character == '*')
+            {
+                return NumOne * NumTwo;
+            }
+            else if (Character == '/')
+            {
+                double d = (double)NumOne / NumTwo;
+                return d;
+            }
+            else return -1;
+        }
+        public bool Equals(int a, int b)
+        {
+            if (a == b)
+                return true;
+            else
+                return false;
+        }
+    }
+}
+
+Program.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Calcuator
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("请选择操作,1、连接和去除 2、四则运算");
+            Figure c = new Figure();
+            int a=Convert.ToInt16(Console.ReadLine());
+            switch (a)
+            {
+                case 1:
+                    Console.WriteLine("请输入字符");
+                    Console.WriteLine(c.Link()); break;
+                case 2:
+                    Console.WriteLine("请输入整数");
+                    c.InPut();
+                    Console.WriteLine(c.Count());
+                    if (c.Equals(c.NumOne, c.NumTwo))
+                        Console.WriteLine(c.NumOne.ToString() + "和" + c.NumTwo.ToString() + "两数相等");
+                    else
+                        Console.WriteLine(c.NumOne.ToString() + "和" + c.NumTwo.ToString() + "两数不相等"); break;
+                default: 
+                    Console.WriteLine("输入错误"); break;
+            }
+        }
+    }
+}
+
